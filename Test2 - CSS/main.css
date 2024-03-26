@@ -1,0 +1,59 @@
+body {
+    background-color: black;
+}
+
+.main {
+    position: relative;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    color: black;
+    margin: 36px 0;
+    overflow: hidden;
+    animation: mask-move 5s linear infinite alternate;
+    z-index: 1;
+}
+
+@keyframes mask-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(500px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+h1 {
+    width: max-content;
+    text-align: center;
+    font-size: 64px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.main > h1 {
+    animation: text-move 5s linear infinite alternate;
+}
+
+@keyframes text-move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-500px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+h1.white {
+    color: white;
+    position: absolute;
+    top: 36px;
+    left: 8px;
+}
