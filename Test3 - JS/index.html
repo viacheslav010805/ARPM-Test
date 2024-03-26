@@ -1,0 +1,46 @@
+<div id="div1">Hello World</div>
+<div id="div2"></div>
+<button id="myButton">Click me</button>
+
+<script>
+    var button = document.getElementById("myButton");
+    button.addEventListener("click", function () {
+        alert("Button clicked!");
+
+        var text = document.getElementById("div1").textContent;
+        var oddIndexChars = '';
+        var evenIndexChars = '';
+
+        for (var i = 0; i < text.length; i++) {
+            if (i % 2 === 0) {
+                evenIndexChars += text[i];
+            } else {
+                oddIndexChars += text[i];
+            }
+        }
+
+        var delayedMove = function (char, delay) {
+            setTimeout(function () {
+                var charSpan = document.createElement("span");
+                charSpan.textContent = char;
+                document.getElementById("div2").appendChild(charSpan);
+            }, delay * 1000);
+        };
+
+        var oddChars = oddIndexChars.split('');
+        var evenChars = evenIndexChars.split('');
+
+        oddChars.forEach(function (char, index) {
+            var delay = 4 + index;
+            delayedMove(char, delay);
+        });
+
+        setTimeout(function () {
+            evenChars.forEach(function (char) {
+                var charSpan = document.createElement("span");
+                charSpan.textContent = char;
+                document.getElementById("div2").appendChild(charSpan);
+            });
+        }, (Math.max(...oddChars.map((_, index) => 4 + index)) + 1) * 1000);
+    });
+</script>
